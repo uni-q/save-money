@@ -3,7 +3,7 @@
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="jp"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="ja"> <!--<![endif]-->
   <head>
   	<meta charset="utf-8" />
 
@@ -13,7 +13,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "save money" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -21,10 +21,37 @@
   </head>
 
   <body>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to 'save money', savings_path %></h1>
+        </li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li><%= link_to '新規作成', new_saving_path %></li>
+        </ul>
+      </section>
+
+    </nav>
+
+
 
     <%= yield %>
 
-    
+
+<div class="row">
+  <div class="large-12 columns large-centered">
+    <hr>
+    <div class="right">
+      <p>&copy; uniq</p>
+    </div>
+  </div>
+</div>
+
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

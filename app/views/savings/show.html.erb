@@ -1,15 +1,24 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"></p> -->
 
-<p>
-  <b>Date:</b>
-  <%= @saving.date %>
-</p>
+<div class="row">
+  <div class="large-12 columns large-centered">
 
-<p>
-  <b>Price:</b>
-  <%= @saving.price %>
-</p>
+    <div data-alert class="alert-box">
+      <%= notice %>
+    </div>
+    <p>
+      <strong>日付：</strong>
+      <%= @saving.date %>
+    </p>
 
+    <p>
+      <strong>お金:</strong>
+      <%= @saving.price %> 円
+    </p>
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Edit', edit_saving_path(@saving) %></li>
+      <li><%= link_to 'Back', savings_path %></li>
+    </ul>
 
-<%= link_to 'Edit', edit_saving_path(@saving) %> |
-<%= link_to 'Back', savings_path %>
+  </div>
+</div>

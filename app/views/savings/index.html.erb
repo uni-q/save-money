@@ -1,48 +1,57 @@
-<h1>今の貯金：
-  <% if @sum < 0 %>
-    <span style="color: red;"><%= @sum %>円</span>
-  <% else %>
-    <span style="color: blue;"><%= @sum %>円</span>
-  <% end %>
-</h1>
 
+<div class="row">
+  <div class="large-12 columns large-centered">
+    <h2>今の貯金：
+      <% if @sum < 0 %>
+        <span style="color: red;"><%= @sum %>円<small>(´･ω･`)</small></span>
+      <% else %>
+        <span style="color: blue;"><%= @sum %>円<small>(`･ω･´)</small></span>
+      <% end %>
+    </h2>
+    <hr>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Price</th>
-    <th corospan="3">　</th>
-
-  </tr>
-
-<% @savings.each do |saving| %>
-  <tr>
-    <td><%= saving.date %></td>
-    <td>
-      <% if saving.price < 0 %>
-      <span style="color:red;">
-        <%= saving.price %>円
-      </span>
-      <% elsif %>
-      <span style="color:blue;">
-        <%= saving.price %>円
-      </span>
-      <% end -%>
-
-    </td>
-    <td><%= link_to 'Show', saving %></td>
-    <td><%= link_to 'Edit', edit_saving_path(saving) %></td>
-    <td><%= link_to 'Destroy', saving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Saving', new_saving_path %>
+<div class="row">
+  <div class="large-12 columns large-centered">
 
 <!-- メール送信のボタンを作る -->
 <%#= link_to 'メール送信', send_mail_savings_path %>
-<%= mail_to "test@gmail.com",'メール送信2', :subject => "貯金速報", :body => "今の貯金は#{@sum}円です" %>
+<%= mail_to "test@gmail.com",'メール速報', :subject => "貯金速報", :body => "今の貯金は#{@sum}円です", :class => 'button radius' %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns large-centered">
 
+    <table>
+      <tr>
+        <th>日付</th>
+        <th>お金</th>
+        <th>　</th>
+      </tr>
 
+    <% @savings.each do |saving| %>
+      <tr>
+        <td><%= saving.date %></td>
+        <td>
+          <% if saving.price < 0 %>
+          <span style="color:red;">
+            <%= saving.price %>円
+          </span>
+          <% elsif %>
+          <span style="color:blue;">
+            <%= saving.price %>円
+          </span>
+          <% end -%>
+
+        </td>
+        <td>
+          <%#= link_to '見る', saving, :class => 'tiny button secondary' %>
+          <%= link_to '編集', edit_saving_path(saving), :class => 'tiny button secondary' %>
+          <%= link_to '削除', saving, method: :delete, data: { confirm: '消してもよろしいですか？' }, :class => 'tiny button secondary' %>
+      </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

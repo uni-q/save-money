@@ -24,3 +24,9 @@
 <br />
 
 <%= link_to 'New Saving', new_saving_path %>
+
+<!-- メール送信のボタンを作る -->
+<%#= link_to 'メール送信', send_mail_savings_path %>
+<%= mail_to "test@gmail.com",'メール送信2', :subject => "貯金速報", :body => "今の貯金は#{@sum}円です" %>
+
+

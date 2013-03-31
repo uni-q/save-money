@@ -1,5 +1,14 @@
 SaveMoney::Application.routes.draw do
-  resources :savings
+  resources :savings do
+    collection do
+      get "send_mail"
+    end
+  end
+
+#メール送信
+# どのコントローラーを呼び出すか
+
+
 
 
   # The priority is based upon order of creation:
